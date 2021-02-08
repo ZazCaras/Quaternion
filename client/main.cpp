@@ -32,6 +32,8 @@
 #include "linuxutils.h"
 #include <settings.h>
 
+
+
 void loadTranslations(
         std::initializer_list<std::pair<QStringList, QString>> translationConfigs)
 {
@@ -62,13 +64,14 @@ void loadTranslations(
 
 int main( int argc, char* argv[] )
 {
+
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
     QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
 #endif
 
     QApplication::setOrganizationName(QStringLiteral("Quotient"));
     QApplication::setApplicationName(QStringLiteral("quaternion"));
-    QApplication::setApplicationDisplayName(QStringLiteral("Quaternion"));
+    QApplication::setApplicationDisplayName(QStringLiteral("Proyecto enchilada"));
     QApplication::setApplicationVersion(QStringLiteral("0.0.9.4+git"));
     QApplication::setDesktopFileName(
         QStringLiteral("com.github.quaternion.desktop"));
@@ -184,7 +187,7 @@ int main( int argc, char* argv[] )
         window.enableDebug();
     }
 
-    ActivityDetector ad(app, window); Q_UNUSED(ad);
+
     if (parser.isSet(hideMainWindow)) {
         qDebug() << "--- Hide time!";
         window.hide();

@@ -19,6 +19,8 @@
 
 #include "mainwindow.h"
 
+#include <iostream>
+
 #include "roomlistdock.h"
 #include "userlistdock.h"
 #include "chatroomwidget.h"
@@ -74,6 +76,59 @@ using Quotient::Settings;
 using Quotient::AccountSettings;
 using Quotient::Uri;
 
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+
+    Qt::KeyboardModifiers mod = event->modifiers();
+
+    // 48 - 57 corresponde a 0 - 9
+    int key = event->key();
+
+    std::cout << "boton presionado: " << key << "\n";
+
+/*
+
+*/
+
+    switch(mod) {
+ 
+        case Qt::ControlModifier:
+            if(key == 48) {
+                resize(10, 10);
+            }
+            else if (key == 49) {
+                resize (100,100);
+            }
+            else if (key == 50) {
+                resize (200,200);
+            }
+            else if (key == 51) {
+                resize (300,300);
+            }
+            else if (key == 52) {
+                resize (400,400);
+            }
+            else if (key == 53) {
+                resize (500,500);
+            }
+            else if (key == 54) {
+                resize (600,600);
+            }
+            else if (key == 55) {
+                resize (700,700);
+            }
+            else if (key == 56) {
+                resize (800,800);
+            }
+            else if (key == 57) {
+                resize (900,900);
+            }
+            break;
+        default:
+            QWidget::keyPressEvent(event);
+    }    
+}
+
+
 MainWindow::MainWindow()
 {
     Connection::setRoomType<QuaternionRoom>();
@@ -121,6 +176,9 @@ MainWindow::MainWindow()
     busyLabel->show();
     busyIndicator->start();
     QTimer::singleShot(0, this, SLOT(invokeLogin()));
+
+    setFocusPolicy(Qt::ClickFocus); 
+
 }
 
 MainWindow::~MainWindow()
