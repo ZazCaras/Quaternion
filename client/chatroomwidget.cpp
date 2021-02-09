@@ -650,25 +650,48 @@ QString ChatRoomWidget::sendCommand(const QStringRef& command,
 
 void ChatRoomWidget::sendInput()
 {
-
+    {
     std::string miTexto = m_chatEdit->toPlainText().toStdString();
-    size_t len = miTexto.size();
     
+    size_t qq = miTexto.size();
+    char* copia = new char[qq + 1];
+    copia[qq] = '\0';
 
-    std::cout << "Mi texto es: " 
-        << miTexto << " de tamano " 
-        << len << "\n";
+    while (qq > 0) {
 
-    if (len >= 3) {
-        char c1 = miTexto[0];
-        char c2 = miTexto[1];
-        char c3 = miTexto[2];
-"tarea: imprimir cada caracter y su posicion en el string"
-        std::cout << "Caracter 1: " << c1 << "\n";
-        std::cout << "Caracter 2: " << c2 << "\n";
-        std::cout << "Caracter 3: " << c3 << "\n";
+        int i = qq - 1;
+        qq--; 
+        copia[i] = miTexto[i];
+        std::cout << "Se esta copiando: " << i << "\n";
 
     }
+
+    std::cout << "El resultado es: " << copia << "\n";
+
+
+
+    std::string misStrings[12];
+    misStrings[0] = "hola hola";
+
+    int misInts[15];
+    misInts[0] = 42;
+    misInts[1] = 45;
+
+    char miTexto2 [10]; 
+
+    miTexto2[0] = miTexto[0];
+    miTexto2[1] = 'j';
+
+    //size_t tam1 = miTexto.size();
+    //size_t tam2 = miTexto.size();
+
+    char c0 = miTexto[0];
+    miTexto[0] = 'h';
+
+    std::cout << "Mi nuevo texto es: " << miTexto2[0] << miTexto2[1] << misInts[0] << misInts[1] << misStrings[0] <<"\n";
+
+    }
+
 
     if (!attachedFileName.isEmpty())
         sendFile();
