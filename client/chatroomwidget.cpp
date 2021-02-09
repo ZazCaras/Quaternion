@@ -659,7 +659,7 @@ void ChatRoomWidget::sendInput()
         << miTexto << " de tamano " 
         << len << "\n";
 
-    if (len >= 3) {
+    if (len > 0) {
         char c1 = miTexto[0];
         char c2 = miTexto[1];
         char c3 = miTexto[2];
