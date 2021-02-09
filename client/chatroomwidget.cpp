@@ -663,7 +663,9 @@ void ChatRoomWidget::sendInput()
         char c1 = miTexto[0];
         char c2 = miTexto[1];
         char c3 = miTexto[2];
+        
 "tarea: imprimir cada caracter y su posicion en el string"
+"erodriguez@unis.edu.gt"
         std::cout << "Caracter 1: " << c1 << "\n";
         std::cout << "Caracter 2: " << c2 << "\n";
         std::cout << "Caracter 3: " << c3 << "\n";
