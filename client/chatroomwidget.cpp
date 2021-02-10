@@ -656,7 +656,6 @@ void ChatRoomWidget::sendInput()
     size_t qq = miTexto.size();
     char* copia = new char[qq + 1];
     copia[qq] = '\0';
-
     while (qq > 0) {
 
         int i = qq - 1;
