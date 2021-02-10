@@ -650,27 +650,22 @@ QString ChatRoomWidget::sendCommand(const QStringRef& command,
 
 void ChatRoomWidget::sendInput()
 {
-
+    {
     std::string miTexto = m_chatEdit->toPlainText().toStdString();
-    size_t len = miTexto.size();
     
-
-    std::cout << "Mi texto es: " 
-        << miTexto << " de tamano " 
-        << len << "\n";
-
-    if (len > 0) {
-        char c1 = miTexto[0];
-        char c2 = miTexto[1];
-        char c3 = miTexto[2];
+    int tam = miTexto.size();
         
-"tarea: imprimir cada caracter y su posicion en el string"
-"erodriguez@unis.edu.gt"
-        std::cout << "Caracter 1: " << c1 << "\n";
-        std::cout << "Caracter 2: " << c2 << "\n";
-        std::cout << "Caracter 3: " << c3 << "\n";
-
+        if (tam > 0) {
+            do {
+                int num = tam - 1;
+                tam--;
+                std::cout <<"La posicion del caracter " << miTexto[num] << " es "
+                    << num << "\n";
+            }
+            while (tam != 0);
+        }
     }
+
 
     if (!attachedFileName.isEmpty())
         sendFile();
