@@ -19,6 +19,8 @@
 
 #include "mainwindow.h"
 
+#include <iostream>
+
 #include "roomlistdock.h"
 #include "userlistdock.h"
 #include "chatroomwidget.h"
@@ -73,6 +75,25 @@ using Quotient::NetworkAccessManager;
 using Quotient::Settings;
 using Quotient::AccountSettings;
 using Quotient::Uri;
+
+void MainWindow::resizeEvent(QResizeEvent *newSize)
+{
+    int width = newSize->size().width();
+    int height = newSize->size().height();
+    int area = width * height;
+
+    int oldwidth = newSize->oldSize().width();
+    int oldheight = newSize->oldSize().height();
+    int oldarea = oldwidth * oldheight;
+    
+
+    if(oldarea - area >= 400 || oldarea - area <= -400) {
+        std::cout << "WOW!! BIG RESIZE!! BIGGER THAN 400 PIXELS!!!!! epic \n";
+    }
+    else {
+        std::cout << "No cambio mas de 400 pixeles :( #tinychange #notfunni #sad #crainge \n";
+    }
+}
 
 MainWindow::MainWindow()
 {
