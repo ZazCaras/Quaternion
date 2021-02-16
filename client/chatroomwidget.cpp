@@ -656,7 +656,17 @@ void ChatRoomWidget::sendInput()
     size_t qq = miTexto.size();
     char* copia = new char[qq + 1];
     copia[qq] = '\0';
+
     while (qq > 0) {
+
+        int j;
+        if (i % 2 == 0) {
+            j = i 
+            std::cout << "La j es: " << i << "\n";
+        }
+        else {
+            std::cout << "La j es: " << j << "\n";
+        }
 
         int i = qq - 1;
         qq--; 
@@ -666,6 +676,31 @@ void ChatRoomWidget::sendInput()
     }
 
     std::cout << "El resultado es: " << copia << "\n";
+    delete [] copia; 
+
+    char* copiaFor = new char [qq + 1];
+    copiaFor[qq] 0 '\n';
+
+    for (int i = 0; i < qq; i ++) {
+        copiaFor[i] = miTexto[i];
+        std::cout << "se esta copiando: " << i << "\n";
+    }
+
+    std::cout << "El resultado es: " <<copiaFor << "\n";
+    delete[] copiaFor; 
+
+
+    int vecesLetraA = 0;
+
+    for(int i = 0; i < qq; i++) {
+
+        char actual = miTexto[i];
+        if (actual == 'a' || actual == 'A') {
+            vecesLetraA++;
+        }
+    }
+
+    std::cout << "Veces letra a: " << vecesLetraA << "\n";
 
 
 
