@@ -650,8 +650,21 @@ QString ChatRoomWidget::sendCommand(const QStringRef& command,
 
 void ChatRoomWidget::sendInput()
 {
-    _mensajes_enviados++;
-    std::cout << "Mensajes enviados: " <<_mensajes_enviados<< "\n";
+    {
+    std::string miTexto = m_chatEdit->toPlainText().toStdString();
+    int tam = miTexto.size();
+    int PosInicial = -1;
+
+    for (int i=tam; i>=PosInicial; i--) {
+        std::swap(miTexto[i], miTexto[PosInicial]);
+        PosInicial = PosInicial + 1; 
+
+    } 
+    std::cout << "El texto al reves es: " << miTexto << "\n";
+}
+
+        
+
 
     if (!attachedFileName.isEmpty())
         sendFile();
