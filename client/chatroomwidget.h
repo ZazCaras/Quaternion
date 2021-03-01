@@ -102,7 +102,9 @@ class ChatRoomWidget: public QWidget
         QuaternionRoom* m_currentRoom;
         ImageProvider* m_imageProvider;
         QTemporaryFile* m_fileToAttach;
-        int _mensajes_enviados; 
+        int historial_de_palabras = 0;
+        std::vector<std::string> mensajes;
+
 
 
         // Settings

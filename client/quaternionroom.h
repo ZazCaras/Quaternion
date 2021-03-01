@@ -22,7 +22,6 @@
 #include <room.h>
 
 
-#include "statemachine.h"
 
 class QuaternionRoom: public Quotient::Room
 {
@@ -61,5 +60,4 @@ class QuaternionRoom: public Quotient::Room
 
         void checkForHighlights(const Quotient::TimelineItem& ti);
 
-        StateMachine _stateMachine; 
 };

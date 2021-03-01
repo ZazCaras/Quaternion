@@ -59,6 +59,7 @@
 
 #include <iostream>
 #include <ctype.h>
+#include <vector>
 
 
 static const auto DefaultPlaceholderText =
@@ -653,103 +654,45 @@ QString ChatRoomWidget::sendCommand(const QStringRef& command,
 void ChatRoomWidget::sendInput()
 {
     std::string miTexto = m_chatEdit->toPlainText().toStdString();
+    size_t tamano = miTexto.size();
 
-//veces que se repite vocal
-    size_t qq = miTexto.size();
-    int vecesVocal = 0;
+    /* Ejercicio 1
+    Modifique el programa Quaternion de tal forma que se lleve el conteo de la cantiad total de palabras que hayan sido 
+    enviadas por el chat. Este conteo debe imprimirse en la consola cada vez que se envia un mensaje.
+    */
+    int numPalabras = 0;
+    char espacio = ' '; 
 
-    for(int i = qq - 1 ; i >= 0; i--) {
-
-        char actual = miTexto[i];
-        if(actual == 'a' || actual == 'A' 
-        || actual == 'e' || actual == 'E'
-        || actual == 'i' || actual == 'I'
-        || actual == 'o' || actual == 'O'
-        || actual == 'u' || actual == 'U') {
-            vecesVocal++;
-        }
-    }
-
-    std::cout << "Veces vocales: " << vecesVocal << "\n";
-
-
-//Si es un palindrome
-    size_t leng = miTexto.size();
-    char* sentence = new char (leng + 1);
-    sentence[leng] = '\0';
-    int size = leng - 1;
-
-    for(int i = leng-1; i >= 0; i--) { 
-
-        sentence[i] = miTexto[size -i];
-    }
-
-    if(sentence == miTexto) {
-        std::cout << "mensaje es un palindromo" << "\n";
-    }
-        else {
-            std::cout << "mensaje no es un palindromo" << "\n";
+    for(int i = tamano - 1; i >= 0; i--) {
+        if (miTexto[i] != espacio) {
+            numPalabras++;
+        
+            while (i > 0 && miTexto[i - 1] != espacio) {
+                i--;
             }
-    delete[] sentence;
-
-
-//Numero de palabras
-
-int numPalabras = 0;
-char espacio = ' '; 
-
-for(int i = qq - 1; i >= 0; i--) {
-    if (miTexto[i] != espacio) {
-        numPalabras++;
-    
-        while (i > 0 && miTexto[i - 1] != espacio) {
-            i--;
         }
     }
-}
+    historial_de_palabras += numPalabras;
+    std::cout << "Número de palabras totales: " <<historial_de_palabras<< "\n\n";
 
-std::cout << "El numero de palabras es: " << numPalabras << "\n";
+    /*
+    Ejercicio 2
+    Modifique el programa Quaternion de tal forma que siempre que el usuario envie un mensaje, se imprima en la consola los 
+    ultimos 10 mensajes que el usuario haya enviado. Si se han enviado menos de 10 mensajes, imprimir todos los mensajes 
+    que se han enviado hasta el momento. Recuerde liberar la memoria siempre que un mensaje ya no este en la lista. 
+    Si desea, puede investigar el uso de std::vector para facilitar este ejercicio, pero no es necesaria la utilización del mismo.
+    */
+    std::cout << "Los mensajes anteriores fueron:\n";
 
+    mensajes.push_back(miTexto);
 
-
-//Cantidad de veces que aparece la palabra "hola" en el mensaje.
-
-    int hola = 0;
-
-    for(int i = 0; i < qq; i++) {
-
-        char h = miTexto[i];
-        char o = miTexto[i+1];
-        char l = miTexto[i+2];
-        char a = miTexto[i+3];
-
-
-        if((h == 'h' || h == 'H') &&
-        (o == 'o' || o == 'O') &&
-        (l == 'l' || l == 'L') &&
-        (a == 'a' || a == 'A')) {
-            hola++;
-        }
+    if (mensajes.size() > 10) {
+        mensajes.erase(mensajes.begin());
     }
 
-    std::cout << "holas: " << hola << "\n";
-
-
-//Cantidad de numeros
-
-    int numbers = 0;
-
-    for(int i = qq - 1 ; i >= 0; i--) {
-
-        char actual = miTexto[i];
-        if(isdigit(actual)) {
-            numbers++;
-        }
+    for (std::string mensaje : mensajes) {
+        std::cout << mensaje << "\n";
     }
-
-    std::cout << "Cantidad de numeros: " << numbers << "\n";
-
-
 
         
 
