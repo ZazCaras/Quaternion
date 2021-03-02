@@ -25,7 +25,6 @@
 
 #include <QtWidgets/QWidget>
 #include <QtCore/QBasicTimer>
-#include <vector>
 
 
 #ifndef USE_QQUICKWIDGET
@@ -104,8 +103,7 @@ class ChatRoomWidget: public QWidget
         QuaternionRoom* m_currentRoom;
         ImageProvider* m_imageProvider;
         QTemporaryFile* m_fileToAttach;
-        int historial_de_palabras = 0;
-        std::vector<std::string> mensajes;
+        int _mensajes_enviados;
 
 
 
