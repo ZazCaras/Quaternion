@@ -164,6 +164,7 @@ set(quaternion_SRCS
     client/chatroomwidget.cpp
     client/systemtrayicon.cpp
     client/profiledialog.cpp
+    client/questionmachine.cpp
     client/models/messageeventmodel.cpp
     client/models/userlistmodel.cpp
     client/models/roomlistmodel.cpp

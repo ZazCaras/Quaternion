@@ -19,7 +19,10 @@
 
 #pragma once
 
+#include <iostream>
 #include <room.h>
+#include "questionmachine.h"
+
 
 class QuaternionRoom: public Quotient::Room
 {
@@ -52,6 +55,7 @@ class QuaternionRoom: public Quotient::Room
     private:
         QSet<const Quotient::RoomEvent*> highlights;
         QString m_cachedUserFilter;
+        QuestionMachine _questionmachine; 
 
         void onAddNewTimelineEvents(timeline_iter_t from) override;
         void onAddHistoricalTimelineEvents(rev_iter_t from) override;
